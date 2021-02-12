@@ -1,16 +1,16 @@
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.OpenApi.Models;
-using Swashbuckle.AspNetCore.SwaggerGen;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Reflection;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.OpenApi.Models;
+using Swashbuckle.AspNetCore.SwaggerGen;
 
-namespace Swashbuckle.AspNetCore.AuthorizationFilters
+namespace Itage.Swashbuckle.AspNetCore.Filters
 {
     /// <summary>
-    /// Adds correct Bearer: token authorization in generated swagger
+    /// Adds correct authorization requirements in generated swagger
     /// </summary>
     [ExcludeFromCodeCoverage]
     // ReSharper disable once ClassNeverInstantiated.Global
