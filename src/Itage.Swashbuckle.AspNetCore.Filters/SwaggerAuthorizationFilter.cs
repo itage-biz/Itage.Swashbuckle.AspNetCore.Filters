@@ -1,7 +1,4 @@
-using System;
-using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
-using System.Linq;
 using System.Reflection;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.OpenApi.Models;
@@ -36,14 +33,14 @@ namespace Itage.Swashbuckle.AspNetCore.Filters
             if (GetControllerAndActionAttributes<AllowAnonymousAttribute>(context).Any())
                 return;
 
-            var attributes = GetControllerAndActionAttributes<T>(context);
+            IReadOnlyCollection<T> attributes = GetControllerAndActionAttributes<T>(context);
             // Skipping endpoints without any authorization attributes
             if (!attributes.Any())
             {
                 return;
             }
 
-            foreach (var requirement in _callback(attributes))
+            foreach (OpenApiSecurityRequirement? requirement in _callback(attributes))
             {
                 operation.Security.Add(requirement);
             }
